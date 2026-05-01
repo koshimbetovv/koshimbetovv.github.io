@@ -401,6 +401,18 @@ h3 {
   gap: 1rem;
 }
 
+.news-toggle {
+  margin-top: 1.2rem;
+}
+
+.news-link {
+  margin-top: 0.35rem;
+}
+
+.news-extra[hidden] {
+  display: none !important;
+}
+
 .timeline-item {
   display: grid;
   grid-template-columns: 150px minmax(0, 1fr);

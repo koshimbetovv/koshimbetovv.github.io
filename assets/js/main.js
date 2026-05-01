@@ -4,6 +4,8 @@ const links = document.querySelectorAll('.nav-links a');
 const themeToggle = document.querySelector('.theme-toggle');
 const year = document.querySelector('#year');
 const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+const newsToggle = document.querySelector('.news-toggle');
+const extraNewsItems = document.querySelectorAll('.news-extra');
 
 function applyTheme(theme) {
   const isDark = theme === 'dark';
@@ -75,3 +77,17 @@ const observer = new IntersectionObserver(
 );
 
 sections.forEach((section) => observer.observe(section));
+
+if (newsToggle && extraNewsItems.length) {
+  newsToggle.addEventListener('click', () => {
+    const shouldShow = newsToggle.getAttribute('aria-expanded') !== 'true';
+
+    extraNewsItems.forEach((item) => {
+      item.hidden = !shouldShow;
+      item.style.display = shouldShow ? '' : 'none';
+    });
+
+    newsToggle.setAttribute('aria-expanded', String(shouldShow));
+    newsToggle.textContent = shouldShow ? 'Show less' : 'Show more';
+  });
+}
